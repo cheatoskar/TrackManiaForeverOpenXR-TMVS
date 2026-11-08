@@ -16,4 +16,4 @@ Both mods have to be installed with the mod loader, and TM Vibrant Shaders has t
 
 ## Where the code is
 
-The patch is on the branch [`tmvs-handover`](https://github.com/cheatoskar/TrackManiaForeverOpenXR-TMVS/tree/tmvs-handover) (`src/d3d9_proxy.cpp`, `TMFOXR.defaults.ini`). This branch (`master`) is jiink's code with this README only.
+The patch changes `src/d3d9_proxy.cpp` and `TMFOXR.defaults.ini`. `master` is jiink's code with the patch and this README; the branch [`tmvs-handover`](https://github.com/cheatoskar/TrackManiaForeverOpenXR-TMVS/tree/tmvs-handover) is the same patch without this README, for the pull request.
