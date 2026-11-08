@@ -1,105 +1,19 @@
-# TrackMania Forever OpenXR
+# TrackMania Forever OpenXR + TM Vibrant Shaders
 
-A VR mod for [TrackMania Nations Forever](https://store.steampowered.com/app/11020/TrackMania_Nations_Forever/) and [TrackMania United Forever](https://store.steampowered.com/app/7200/Trackmania_United_Forever/)
+This is a fork of [jiink/TrackManiaForeverOpenXR](https://github.com/jiink/TrackManiaForeverOpenXR), the VR mod for TrackMania Nations/United Forever, with one patch: it lets [TM Vibrant Shaders](https://github.com/cheatoskar/TM-Vibrant-Shaders) run in VR. Everything else is jiink's mod: for installation, settings and help see the [original README](https://github.com/jiink/TrackManiaForeverOpenXR#readme).
 
-https://github.com/user-attachments/assets/a480d2e1-3934-44b0-a53c-918aacd992b3
+The patch is by [wial663](https://github.com/wial663) and is offered to the original mod as a pull request. Once it is merged there, use the original.
 
-Installation video tutorial:
+## What the patch does
 
-[![installation video](https://img.youtube.com/vi/xMwuuWqYHf8/0.jpg)](https://www.youtube.com/watch?v=xMwuuWqYHf8)
+Under VR, TM Vibrant Shaders never saw the game's graphics device, so its menu and effects stayed off. With the patch the VR mod hands the device over:
 
-> [!WARNING]
-> ## AI made it.
-> This repo's code is 100% LLM-generated. I didn't write any of this code, just the readme. All I did was sit with my VR headset on and launch the game whenever AI finished its turn.
+- **Default:** the TM Vibrant Shaders menu (`F8`) shows in the headset and its keys work. Its effects stay off; the VR image is not changed.
+- **`AttachVibrantShaders=2`** under `[Compatibility]` in `Documents\TrackMania\TMFOXR.ini`: TM Vibrant Shaders shades each eye. Experimental.
+- **`AttachVibrantShaders=0`:** the hand-over is off.
 
-## Usage
+Both mods have to be installed with the mod loader, and TM Vibrant Shaders has to be a version with the VR hand-over.
 
-Download the latest release [from the releases page](https://github.com/jiink/TrackManiaForeverOpenXR/releases)
+## Where the code is
 
-### Important settings
-
-**you have to disable fullscreen and anti aliasing in the Trackmania options, and the complete game window must fit within the monitor's usable area.** Current builds detect these incompatible conditions, show a warning, and continue on the desktop without initializing VR.
-
-<img width="351" height="189" alt="image" src="https://github.com/user-attachments/assets/e39cf512-4586-4187-8dbd-8bc588ce553e" />
-
-<img width="1064" height="490" alt="image" src="https://github.com/user-attachments/assets/83a78e11-3e29-4c07-8a37-f8dc205d3120" />
-
-Also, you need to set your OpenXR runtime correctly. If you're using Virtual Desktop, set it to use VDXR. ~~If you're using Meta Horizon Link, go in the settings and press the button that sets OpenXR to use its thingy.~~ (As of v8, the mod crashes with Meta Horizon Link. Try Steam Link or Virtual Desktop instead.) If you're using SteamVR, go to its settings, go to the OpenXR section, and set OpenXR to use SteamVR's runtime.
-
-<img width="1102" height="424" alt="image" src="https://github.com/user-attachments/assets/ed552f71-fa60-40fb-a839-7601fd8c59db" />
-
-
-Some OpenXR "layers" may cause issues if they don't support 32-bit (e.g. reshade). But some like the "Compatibility layer for OculusXR plugin" seem to work fine.
-
-You can install this mod manually, or with a mod loader. The manual method takes less steps, but the mod loader lets you disable/enable the mod with one click. If you use the mod loader, 
-
-### No mod loader
-
-1. Download the relevant attached zip
-2. Unzip all its contents into the game directory next to the Trackmania executable (right click the game in Steam, click "Manage", then "Browse local files")
-3. Have your VR headset connected to your PC
-4. Run TmForeverLauncher.exe (or launch "TrackMania United Forever Settings" in Steam), go to "configure", UNCHECK FULLSCREEN, click "advanced", and **set "antialiasing" to "none"**, then hit "ok", "save", then "play"
-5. You should see the game show up in your headset - seeing a proper 3D globe behind the UI
-
-### With mod loader
-
-1. Get [Tomashu's TrackMania ModLoader](https://tomashu.dev/software/tmloader/)
-1. Make sure it works, launch the game once using it.
-1. Close the mod loader.
-1. Download the relevant attached zip (different than the one for no mod loader)
-1. Unzip its contents to `%LOCALAPPDATA%\TMLoader\database\TmForever\products`
-1. Open the mod loader.
-1. Enable the TMFOXR mod
-1. Have your VR headset connected to your PC
-1. Run TmForeverLauncher.exe (or launch "TrackMania Nations/United Forever Settings" in Steam), go to "configure", UNCHECK FULLSCREEN, click "advanced", and **set "antialiasing" to "none"**, then hit "ok", "save", then "play"
-1. You should see the game show up in your headset - seeing a proper 3D globe behind the UI
-
-## Things U gotta know
-
-### First person mode
-
-To enter first person mode, press 3 on your keyboard (going by default controls)
-
-### HD car interiors
-
-This only applies to TrackMania United Forever, not Nations.
-
-In TrackMania United Forever, there are lots of cars, but they don't look good from the first person view. To fix this, you can get the HD car skins from the [Unofficial Visual and Musical Extension (UVME)](https://strangeplanet.fr/work/trackmania-uvme/) installer
-
-<img width="986" height="388" alt="image" src="https://github.com/user-attachments/assets/e1977cde-84de-4bdd-8def-6db8554c69ef" />
-
-Note that after installing this, you have to actually equip the HD skins in the Profile menu.
-
-### In-VR settings
-
-By default, press F10 while in-game to open the VR settings menu.
-
-### Note on computing shadows
-
-<img width="551" height="379" alt="computing shadows small" src="https://github.com/user-attachments/assets/35671029-0197-4592-be9b-a83474a8e741" />
-
-Some tracks will try to compute shadows. This takes SO LONG! So when you see it, just cancel it after a couple seconds. If you try to cancel it too quickly, it won't cancel.
-
-If you use CoreMod (which comes included in TrackMania ModLoader) the shadow baking is much faster.
-
-## Building & more
-
-For more details, see [the AI generated readme](AI-GENERATED-README.md). I cannot vouch for its accuracy.
-
-## My AI workflow for this project
- 
-People have been making VR mods using AI with some pretty good success. I wouldn't mind trying to do this myself, but the amount of time and effort it takes for the reward is poor: I don't care THAT much about being able to play xyz game in VR once and never again. All the good stuff like [Half-Life 2](https://store.steampowered.com/app/658920/HalfLife_2_VR_Mod/) and [Outer Wilds](https://outerwildsmods.com/mods/nomaivr/) has already been done by real people over many years of work.
-
-Really I wanted to have a VR mod for Trackmania 2020, but got scared away by the likelihood of anti-cheat being in that game and being alerted by whatever's necessary to make a VR mod for it.
-
-I googled to find if I could play any Trackmania in VR. I found that one medicore Trackmania game that I don't have has a VR mode, but that's it. I didn't see any mods for other TM games available.
-
-Usually when I use AI help in coding it's just pasting code to chatbots in the browser like Google Gemini or ChatGPT. A few times I've tried using the agent feature built into VSCode, with mixed results. Last time I tried that - for a different project - I wrote up a detailed document about the software requirements and it just made so many stupid mistakes, ignored so many requirements, and got important math wrong after multiple tries. What a joke!
-
-So for this, I wasn't sure what to use. I avoided Claude Code because it sounded like it had limited usage and high price. So I bought $5 of credits for DeepSeek and set up Aider (which lets your AI model of choice make code files and do git commits) since it's really cheap and I've heard it's pretty up to par. I gave it a detailed instructions file. This started off okay, but Aider stopped since DeepSeek somehow ended up disobeying the paritcular formatting Aider needs several times in a row. That was using the "reasoning" model. I tried to continue it with the faster "chat" model, but it quickly ended up spitting out the same two lines repeatedly indefinitley, something I haven't seen since, what, GPT-2? It also needed me to sit there and watch it for when it needed my approval to read files, make new files, etc. Aider's "auto approve" setting didn't make it so I could walk away while AI worked. Even when I did manually add files to the chat, the AI acted like I didn't. This was frustrating since I was looking for a hands-off approach. I had it work in a clone of the [ModTMNF](https://github.com/pixeltris/ModTMNF) repo since that seemed like a good starting point for hooking into the game. Then I realized that Trackmania Nations Forever is different from my target game, Trackmania United Forever. They might be similar enough games for that repo to be helpful for a VR mod, but I wasn't too sure, so I left that behind.
-
-I decided I'd try the ChatGPT desktop app, which I thought was called Codex (but it's just called "ChatGPT"). I gave it a blank folder to work in, and just wrote a few sentences describing what I wanted (omitting my detailed instructions file from earlier), and told it where my Trackmania United Forever executable was located. I set it to auto-approve, set it to use the "Terra" model, I set "effort" to "high" (IDK how I'm supposed to know which model and effort combo I'm supposed to use.) After 13 minutes, without any of my intervention required, it had something for me to try, and it placed a new dll by the executable by itself. It's kinda scary how it can just do (mostly) whatever it wants on my PC, but it's either that, or me sitting there watching for 13 minutes and pressing "accept" once in a while. It started off just trying to get any image to show in the VR headset. from then on it was very incremental and it would be a couple hours before I saw anything stereoscopic. For a couple hours straight I would just have to put on my headset, launch the game, describe what I saw (which was often difficult), close the game, paste logs, take off my headset, and wait for the next turn. Soon I caved in and paid $20 for a month of premium and switched to their best model, "Sol", which I really hesitated to since I don't care a whole lot about seeing this game in VR.
-
-After getting the game picture to show in the headset (in an extremely poor way), it started to make my head movement make the cursor move around, thinking this game had mouselook and thinking that mouselook was the right way to make a game work in VR. This was dissapointingly stupid and I saw it was trying to avoid the hard (but necessary) part of making the actual game camera move around in a custom way. I unfortunatley had to use my brain for a second and tell it that it was going the wrong approach. If I didn't interject here, I don't think this project would have gotten anywhere. I said that first we needed to see a stereo picture in the headset, and THEN it can make the openXR headset pose affect the game's camera pose.
-
-That said, the ChatGPT app is the mostly-hands-off approach that I was looking for from the start, even though I really don't like spending $20 for the month rather than despositing $X of credits in.
+The patch is on the branch [`tmvs-handover`](https://github.com/cheatoskar/TrackManiaForeverOpenXR-TMVS/tree/tmvs-handover) (`src/d3d9_proxy.cpp`, `TMFOXR.defaults.ini`). This branch (`master`) is jiink's code with this README only.
